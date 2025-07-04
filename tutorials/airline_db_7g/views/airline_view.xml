@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="airline_list_view" model="ir.ui.view">
+            <field name="name">airline_db.airline.list</field>
+            <field name="model">airline_db.airline</field>
+            <field name="arch" type="xml">
+                <list string="Airline Informations">
+                    <field name="name"/>
+                    <field name="aircraft_no" type="measure"/>
+                    <field name="revenue_total" type="measure"/>
+                    <field name="revenue_ancillary" type="measure"/>
+                </list>
+            </field>
+        </record>
+
+        <record id="airline_form_view" model="ir.ui.view">
+            <field name="name">airline_db.airline.form</field>
+            <field name="model">airline_db.airline</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group string="Airline Informations">
+                            <field name="name"/>
+                            <field name="airline_id"/>
+                            <field name="country_id"/>
+                            <field name="iata_member"/>
+                            <field name="alliance"/>
+                            <field name="service_type"/>
+                            <field name="flag_carrier"/>
+                            <field name="aircraft_no" type="measure"/>
+                            <field name="revenue_total" type="measure"/>
+                            <field name="revenue_ancillary" type="measure"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="airline_list_act" model="ir.actions.act_window">
+            <field name="name">Airlines</field>
+            <field name="res_model">airline_db.airline</field>
+            <field name="view_mode">list,form,pivot</field>
+        </record>
+
+        <record id="airline_alliance_act" model="ir.actions.act_window">
+            <field name="name">Alliances</field>
+            <field name="res_model">airline_db.alliance</field>
+            <field name="view_mode">list,form</field>
+        </record>
+
+        <!-- Airline Menu -->
+        <menuitem id="menu_airline_root"
+                  name="Airline Database"/>
+        <menuitem id="menu_airline"
+                  name="Airlines"
+                  parent="menu_airline_root"
+                  action="airline_list_act"/>
+        <!-- Alliance menu -->
+        <menuitem id="menu_airline_alliance"
+          name="Alliances"
+          parent="menu_airline_root"
+          action="airline_alliance_act"/>
+
+    </data>
+</odoo>
